@@ -11,6 +11,9 @@ namespace NewsReptileDB.DB.Dal
 {
     public class web_dataDal : base_dal<web_dataModel>
     {
+        /// <summary>
+        /// 根据最开始标题和爬取来源获取实体对象
+        /// </summary>
         public web_dataModel GetByTopTitleAndSource(String top_title, String source)
         {
             SqlParameter[] _params = new SqlParameter[] {
@@ -19,7 +22,9 @@ namespace NewsReptileDB.DB.Dal
             };
             return base.GetOne("select * from web_data where top_title = @top_title and source = @source", _params);
         }
-
+        /// <summary>
+        /// 根据标题和爬取来源获取实体对象
+        /// </summary>
         public web_dataModel GetByTitleAndSource(String title, String source)
         {
             SqlParameter[] _params = new SqlParameter[] {
@@ -28,7 +33,9 @@ namespace NewsReptileDB.DB.Dal
             };
             return base.GetOne("select * from web_data where title = @title and source = @source", _params);
         }
-
+        /// <summary>
+        /// 根据url和爬取来源获取实体对象
+        /// </summary>
         public web_dataModel GetByUrlAndSource(String url, String source)
         {
             SqlParameter[] _params = new SqlParameter[] {

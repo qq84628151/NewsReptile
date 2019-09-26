@@ -12,11 +12,16 @@ namespace NewsReptileDB.DB.Bll
     {
         web_dataDal _web_dataDal = new web_dataDal();
 
+        /// <summary>
+        /// 根据最开始标题和爬取来源获取实体对象
+        /// </summary>
         public web_dataModel GetByTopTitleAndSource(String top_title, String source)
         {
             return _web_dataDal.GetByTopTitleAndSource(top_title, source);
         }
-
+        /// <summary>
+        /// 根据url和爬取来源获取实体对象
+        /// </summary>
         public web_dataModel GetByUrlAndSource(String url, String source)
         {
             return _web_dataDal.GetByUrlAndSource(url, source);

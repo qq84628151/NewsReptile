@@ -11,12 +11,16 @@ namespace NewsReptileDB.DB.Bll
     public class article_contentBll : base_bll<article_contentModel>
     {
         private article_contentDal dal = new article_contentDal();
-
+        /// <summary>
+        /// 添加文章内容
+        /// </summary>
         public void Add(String content, Int32 web_data_id, Int32 _type = 0)
         {
             dal.Add(content, web_data_id, _type);
         }
-
+        /// <summary>
+        /// 读取文章内容
+        /// </summary>
         public String ReadContent(Int32 web_data_id, Int32 _type)
         {
             return dal.ReadContent(web_data_id, _type);

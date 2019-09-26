@@ -17,6 +17,9 @@ namespace NewsReptileDB.DB.Dal
         private readonly Type _type = typeof(T);
         private readonly PropertyInfo[] pros = typeof(T).GetProperties();
 
+        /// <summary>
+        /// 添加一个对象
+        /// </summary>
         public Int32 Add(T model)
         {
             String table_name = _type.Name.Replace("Model", "");
@@ -35,7 +38,9 @@ namespace NewsReptileDB.DB.Dal
                 }
             }
         }
-
+        /// <summary>
+        /// 修改一个对象
+        /// </summary>
         public Int32 Update(T model)
         {
             using (SqlConnection conn = new SqlConnection(sqlite_conn))
@@ -50,7 +55,9 @@ namespace NewsReptileDB.DB.Dal
                 }
             }
         }
-
+        /// <summary>
+        /// 删除一个对象
+        /// </summary>
         public Int32 Delete(Int32 id)
         {
             String table_name = _type.Name.Replace("Model", "");
@@ -64,7 +71,9 @@ namespace NewsReptileDB.DB.Dal
                 }
             }
         }
-
+        /// <summary>
+        /// 获取全部数据
+        /// </summary>
         public List<T> GetAll(String order_col = "create_datetime", String order = "desc")
         {
             String table_name = _type.Name.Replace("Model", "");
@@ -77,7 +86,9 @@ namespace NewsReptileDB.DB.Dal
             }
             return DBUtil.DataTableToList<T>(dt);
         }
-
+        /// <summary>
+        /// 根据id获取实体对象
+        /// </summary>
         public T GetById(Int32 id)
         {
             String table_name = _type.Name.Replace("Model", "");
@@ -86,7 +97,9 @@ namespace NewsReptileDB.DB.Dal
             };
             return GetOne(String.Format("select top 1 * from {0} where id = @id", table_name), _params);
         }
-
+        /// <summary>
+        /// 获取一个列表
+        /// </summary>
         protected List<T> GetList(String sql, SqlParameter[] _params = null)
         {
             DataTable dt = new DataTable();
@@ -101,7 +114,9 @@ namespace NewsReptileDB.DB.Dal
             }
             return DBUtil.DataTableToList<T>(dt);
         }
-
+        /// <summary>
+        /// 获取一条数据
+        /// </summary>
         protected T GetOne(String sql, SqlParameter[] _params = null)
         {
             DataTable dt = new DataTable();

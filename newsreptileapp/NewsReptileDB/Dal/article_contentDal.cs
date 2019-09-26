@@ -10,6 +10,9 @@ namespace NewsReptileDB.DB.Dal
 {
     public class article_contentDal : base_dal<article_contentModel>
     {
+        /// <summary>
+        /// 分块添加文章内容
+        /// </summary>
         public void Add(String content, Int32 web_data_id, Int32 _type = 0)
         {
             //防止数据长度溢出，进行分块处理
@@ -25,7 +28,9 @@ namespace NewsReptileDB.DB.Dal
                 });
             }
         }
-
+        /// <summary>
+        /// 根据网站数据表id和类型获取数据
+        /// </summary>
         public String ReadContent(Int32 web_data_id, Int32 _type)
         {
             SqlParameter[] _params = new SqlParameter[] {
