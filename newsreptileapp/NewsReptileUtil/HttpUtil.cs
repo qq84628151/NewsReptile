@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace NewsReptileUtil.Util
 {
+    /// <summary>
+    /// Http 请求工具类
+    /// </summary>
     public static class HttpUtil
     {
         private static HttpClient http_client = null;
@@ -71,35 +74,6 @@ namespace NewsReptileUtil.Util
                 {
                     req_stream.Close();
                     return streamReader.ReadToEnd();
-                }
-            }
-            finally
-            {
-                httpWebRequest.Abort();
-            }
-        }
-
-        public static Byte[] PostGetBytes(string url, string body = "", string contentType = "text/html", String encode = "utf-8")
-        {
-            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-            try
-            {
-                httpWebRequest.ContentType = contentType;
-                httpWebRequest.Method = "POST";
-                httpWebRequest.Timeout = 60000;
-
-                byte[] btBodys = Encoding.GetEncoding(encode).GetBytes(body);
-                httpWebRequest.ContentLength = btBodys.Length;
-                Stream req_stream = httpWebRequest.GetRequestStream();
-                req_stream.Write(btBodys, 0, btBodys.Length);
-
-                using (HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse())
-                using (Stream streamReader = httpWebResponse.GetResponseStream())
-                {
-                    req_stream.Close();
-                    Byte[] bytes = new Byte[httpWebResponse.ContentLength];
-                    streamReader.Read(bytes, 0, bytes.Length);
-                    return bytes;
                 }
             }
             finally

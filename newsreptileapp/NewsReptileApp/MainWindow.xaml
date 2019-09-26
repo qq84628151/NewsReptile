@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
         <Grid>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="3,0" VerticalAlignment="Center">采集进度(20秒采集一次):</TextBlock>
+                <TextBlock Margin="3,0" VerticalAlignment="Center">采集进度(30秒采集一次):</TextBlock>
                 <ProgressBar
                     Name="progress"
                     Width="300"

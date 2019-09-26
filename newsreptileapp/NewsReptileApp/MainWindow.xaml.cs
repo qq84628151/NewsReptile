@@ -330,7 +330,7 @@ namespace NewsReptileApp
                         SuccessTask("采集完成： 人民日报-首页热闻热闻 ");
                     }, "gb2312");
                     #endregion
-                    Thread.Sleep(TimeSpan.FromSeconds(20));
+                    Thread.Sleep(TimeSpan.FromSeconds(30));
                 }
                 reptile_flag_list.Remove(reptile_flag);
                 StopTask();

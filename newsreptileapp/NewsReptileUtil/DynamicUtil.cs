@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace NewsReptileUtil.Util
 {
+    /// <summary>
+    /// 获取匿名对象属性工具类
+    /// </summary>
     public static class DynamicUtil
     {
          static readonly Dictionary<Type , Dictionary<String, PropertyInfo>> cache = new Dictionary<Type, Dictionary<String, PropertyInfo>>();

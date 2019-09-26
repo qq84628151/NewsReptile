@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace NewsReptileUtil.Util
 {
+    /// <summary>
+    /// 文件处理工具类
+    /// </summary>
     public static class FileUtil
     {
         public static Boolean temp_dir_checked = false;

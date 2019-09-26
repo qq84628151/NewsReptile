@@ -8,6 +8,9 @@ using System.Windows.Media;
 
 namespace NewsReptileUtil.Util
 {
+    /// <summary>
+    /// 子元素和父元素查询查找工具类
+    /// </summary>
     public static class ControleSearchUtil
     {
         public static T GetParentObject<T>(DependencyObject obj, string name) where T : FrameworkElement
