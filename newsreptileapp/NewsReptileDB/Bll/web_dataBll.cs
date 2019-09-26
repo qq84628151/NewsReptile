@@ -26,7 +26,9 @@ namespace NewsReptileDB.DB.Bll
         {
             return _web_dataDal.GetByUrlAndSource(url, source);
         }
-
+        /// <summary>
+        /// 根据标题和爬取来源获取实体对象
+        /// </summary>
         public web_dataModel GetByTitleAndSource(String title, String source)
         {
             return _web_dataDal.GetByTitleAndSource(title, source);
