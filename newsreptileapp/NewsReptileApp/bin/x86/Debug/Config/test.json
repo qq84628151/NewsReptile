@@ -1,0 +1,301 @@
+{
+  /*CCTV首页焦点新闻规则*/
+  "CCTV_Focus_News": {
+    "data_type": "html",
+    "rules": [
+      {
+        "rule_name": "focus news",
+        "is_multiple": true,
+        "rule": "//div[@class='list_lt']//ul//li/a",
+        "match_rule": [
+          {
+            "rule_name": "url",
+            "value_type": "attr",
+            "value_attr": "href"
+          },
+          {
+            "rule_name": "title"
+          },
+          {
+            "rule_name": "title_html",
+            "value_type": "outer_html"
+          }
+        ]
+      }
+    ]
+  },
+  /*CCTV文章内容规则*/
+  "CCTV_Focus_News_Article": {
+    "data_type": "html",
+    /*过滤无作用标签*/
+    "filters": [
+      "//span[@class='shouji']",
+      "//span[@class='font']",
+      "//span[@class='discuss']",
+      "//div[@class='slideDown']"
+    ],
+    "rules": [
+      {
+        "rule_name": "title_text",
+        "rule": "//div[@class='cnt_bd']//h1[1]"
+      },
+      {
+        "rule_name": "title_html",
+        "rule": "//div[@class='cnt_bd']//h1[1]",
+        "value_type": "outer_html"
+      },
+      {
+        "rule_name": "content_text",
+        "rule": "//div[@class='cnt_bd']"
+      },
+      {
+        "rule_name": "content_html",
+        "rule": "//div[@class='cnt_bd']",
+        "value_type": "outer_html"
+      },
+      {
+        "rule_name": "source_time",
+        "rule": "//span[@class='info']//i[1]"
+      },
+      {
+        "rule_name": "videos",
+        "is_multiple": true,
+        "rule": "//div[@class='cnt_bd']//p//script",
+        "match_rule": [
+          {
+            "rule_name": "script",
+            "value_type": "outer_html"
+          }
+        ]
+      },
+      {
+        "rule_name": "imgs",
+        "is_multiple": true,
+        "rule": "//div[@class='cnt_bd']//p//img",
+        "match_rule": [
+          {
+            "rule_name": "img",
+            "value_type": "normal_file",
+            "value_attr": "src"
+          }
+        ]
+      },
+      {
+        "rule_name": "title_text2",
+        "rule": "//div[@id='title_area']//h1[1]"
+      },
+      {
+        "rule_name": "title_html2",
+        "rule": "//div[@id='title_area']//h1[1]",
+        "value_type": "outer_html"
+      },
+      {
+        "rule_name": "content_text2",
+        "rule": "//div[@class='content_area']"
+      },
+      {
+        "rule_name": "content_html2",
+        "rule": "//div[@class='content_area']",
+        "value_type": "outer_html"
+      },
+      {
+        "rule_name": "source_time2",
+        "rule": "//div[@class='info']"
+      },
+      {
+        "rule_name": "videos2",
+        "is_multiple": true,
+        "rule": "//div[@id='content_area']//script",
+        "match_rule": [
+          {
+            "rule_name": "script",
+            "value_type": "outer_html"
+          }
+        ]
+      },
+      {
+        "rule_name": "imgs2",
+        "is_multiple": true,
+        "rule": "//div[@id='content_area']//img",
+        "match_rule": [
+          {
+            "rule_name": "img",
+            "value_type": "normal_file",
+            "value_attr": "src"
+          }
+        ]
+      }
+    ]
+  },
+  /*新华网国际板块焦点新闻*/
+  "XinHuaWang_GuoJiBanKuai": {
+    "data_type": "html",
+    "rules": [
+      {
+        "rule_name": "focus news",
+        "is_multiple": true,
+        "rule": "//ul[@class='newList01']//li/a",
+        "match_rule": [
+          {
+            "rule_name": "url",
+            "value_type": "attr",
+            "value_attr": "href"
+          },
+          {
+            "rule_name": "title"
+          },
+          {
+            "rule_name": "title_html",
+            "value_type": "outer_html"
+          }
+        ]
+      }
+    ]
+  },
+  /*新华网文章规则*/
+  "XinHuaWang_Focus_News_Article": {
+    "data_type": "html",
+    "filters": [
+      "//div[@class='tadd']",
+      "//div[@class='p-tags']"
+    ],
+    "rules": [
+      {
+        "rule_name": "title_text",
+        "rule": "//div[@class='h-title']"
+      },
+      {
+        "rule_name": "title_html",
+        "rule": "//div[@class='h-title']",
+        "value_type": "outer_html"
+      },
+      {
+        "rule_name": "content_text",
+        "rule": "//div[@id='p-detail']"
+      },
+      {
+        "rule_name": "content_html",
+        "rule": "//div[@id='p-detail']",
+        "value_type": "outer_html"
+      },
+      //可能的来源1，因为CCTV文章内容改版中，会出现不同情况
+      {
+        "rule_name": "source1",
+        "rule": "//span[@class='aticle-src']"
+      },
+      //可能的来源2，因为CCTV文章内容改版中，会出现不同情况
+      {
+        "rule_name": "source2",
+        "rule": "//em[@id='source']"
+      },
+      //可能的来源3，因为CCTV文章内容改版中，会出现不同情况
+      {
+        "rule_name": "source3",
+        "rule": "//div[@class='h-info']//span[2]"
+      },
+      {
+        "rule_name": "time",
+        "rule": "//span[@class='h-time']"
+      },
+      {
+        "rule_name": "imgs",
+        "is_multiple": true,
+        "rule": "//div[@id='p-detail']//img",
+        "match_rule": [
+          {
+            "rule_name": "img",
+            "value_type": "normal_file",
+            "value_attr": "src"
+          }
+        ]
+      }
+    ]
+  },
+  /*新华网-科技板块新闻*/
+  "XinHua_KejiBanKuai": {
+    "rules": [
+      {
+        "rule_name": "focus news",
+        "is_multiple": true,
+        "rule": "//div[@id='tabCon']//div[1]//div[@class='hideBody']//ul//li//h3//a",
+        "match_rule": [
+          {
+            "rule_name": "url",
+            "value_type": "attr",
+            "value_attr": "href"
+          },
+          {
+            "rule_name": "title"
+          },
+          {
+            "rule_name": "title_html",
+            "value_type": "outer_html"
+          }
+        ]
+      }
+    ]
+  },
+  /*人民日报-首页焦点新闻*/
+  "RenMinRiBao_ShouYeBanKuai": {
+    "rules": [
+      {
+        "rule_name": "focus news",
+        "is_multiple": true,
+        "rule": "//ul[@id='rmw_b1']//li//a",
+        "match_rule": [
+          {
+            "rule_name": "url",
+            "value_type": "attr",
+            "value_attr": "href"
+          },
+          {
+            "rule_name": "title"
+          },
+          {
+            "rule_name": "title_html",
+            "value_type": "outer_html"
+          }
+        ]
+      }
+    ]
+  },
+  /*人民日报-文章内容规则*/
+  "RenMinRiBao_Focus_News_Article": {
+    "rules": [
+      {
+        "rule_name": "title_text",
+        "rule": "//div[@class='clearfix w1000_320 text_title']//h1"
+      },
+      {
+        "rule_name": "title_html",
+        "rule": "//div[@class='clearfix w1000_320 text_title']//h1",
+        "value_type": "outer_html"
+      },
+      {
+        "rule_name": "content_text",
+        "rule": "//div[@id='rwb_zw']"
+      },
+      {
+        "rule_name": "content_html",
+        "rule": "//div[@id='rwb_zw']",
+        "value_type": "outer_html"
+      },
+      {
+        "rule_name": "source_time",
+        "rule": "//div[@class='box01']//div[@class='fl']"
+      },
+      {
+        "rule_name": "imgs",
+        "is_multiple": true,
+        "rule": "//div[@id='rwb_zw']//img",
+        "match_rule": [
+          {
+            "rule_name": "img",
+            "value_type": "normal_file",
+            "value_attr": "src"
+          }
+        ]
+      }
+    ]
+  }
+}

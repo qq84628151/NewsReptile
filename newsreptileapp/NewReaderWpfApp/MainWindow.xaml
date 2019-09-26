@@ -1,0 +1,46 @@
+﻿<Window
+    x:Class="NewReaderWpfApp.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:NewReaderWpfApp"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="新闻阅读器"
+    Width="1200"
+    Height="600"
+    Loaded="WinLoaded"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Grid>
+        <DataGrid
+            Name="web_data_dg"
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            CanUserSortColumns="True"
+            ColumnWidth="*"
+            IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding title}" Header="标题" />
+                <DataGridTextColumn Binding="{Binding article_time, StringFormat='{}{0:yyyy-MM-dd HH:mm:ss}'}" Header="发布日期" />
+                <DataGridTextColumn Binding="{Binding source}" Header="采集来源" />
+                <DataGridTextColumn Binding="{Binding source2}" Header="新闻来源" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Button
+                                    Width="80"
+                                    Height="24"
+                                    Click="ViewInfoWebData"
+                                    FontSize="12"
+                                    Tag="{Binding id}">
+                                    查看详情
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

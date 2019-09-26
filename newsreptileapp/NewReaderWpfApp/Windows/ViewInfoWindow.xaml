@@ -1,0 +1,58 @@
+﻿<Window
+    x:Class="NewReaderWpfApp.Windows.ViewInfoWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:NewReaderWpfApp.Windows"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ViewInfoWindow"
+    Width="1200"
+    Height="600"
+    Closed="Window_Closed"
+    Loaded="Window_Loaded"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Grid>
+        <TabControl Style="{StaticResource MaterialDesignTabControl}">
+            <TabItem Header="纯数据查看">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock VerticalAlignment="Bottom" FontSize="16">标题:</TextBlock>
+                        <TextBox
+                            x:Name="title"
+                            Grid.Column="1"
+                            IsReadOnly="True"
+                            Text="{Binding _title}" />
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock VerticalAlignment="Top" FontSize="16">内容:</TextBlock>
+                        <ScrollViewer Grid.Column="1">
+                            <TextBox
+                                Name="content"
+                                VerticalAlignment="Top"
+                                AcceptsReturn="True"
+                                IsReadOnly="True"
+                                Text="{Binding _content}"
+                                TextWrapping="Wrap" />
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="浏览器渲染">
+                <Grid Name="web_container" />
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
